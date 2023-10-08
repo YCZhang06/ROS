@@ -17,5 +17,7 @@ class communicate
 		~communicate();
 		void pub_msg();
 		void run();
+
+	private:
 		void callback(const std_msgs::String::ConstPtr &msg);  
 }
