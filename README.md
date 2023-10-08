@@ -1,2 +1,4 @@
 # ROS1
-Basic functions
+CATKIN_MAKE ------------> rename package name to communicate
+
+rosrun communicate topic
