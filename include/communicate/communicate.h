@@ -8,7 +8,7 @@
 class communicate
 {
 	public:
-		std_msgs::String pub_msg;
+		std_msgs::String pub_msgs;
 
 		ros::Publisher pub; 
 		ros::Subscriber sub;
@@ -20,4 +20,6 @@ class communicate
 
 	private:
 		void callback(const std_msgs::String::ConstPtr &msg);  
-}
+};
+
+#endif

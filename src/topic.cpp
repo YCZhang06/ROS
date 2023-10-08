@@ -13,8 +13,8 @@ communicate::~communicate()
 
 void communicate::pub_msg()
 {
-	pub_msg.data = "my name is zyc ---";
-	pub.publish(pub_msg);
+	pub_msgs.data = "my name is zyc ---";
+	pub.publish(pub_msgs);
 }
 
 void communicate::run()
