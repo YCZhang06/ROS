@@ -12,6 +12,11 @@ add_message_files(
   Person.msg
 )
 
+add_service_files(
+  FILES
+  Multi.srv
+)
+
 generate_messages(
   DEPENDENCIES
   std_msgs
