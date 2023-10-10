@@ -9,32 +9,47 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(plumbing REQUIRED)
+find_package(rclcpp_action REQUIRED)
 
-add_executable(topic src/topic.cpp src/topic_node.cpp)
+add_executable(communicate src/communicate.cpp src/communicate_node.cpp)
 add_executable(server src/server.cpp src/server_node.cpp)
-target_include_directories(topic PUBLIC
+add_executable(server_action src/server_action.cpp src/server_action_node.cpp)
+target_include_directories(communicate PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 target_include_directories(server PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(topic PUBLIC c_std_99 cxx_std_17)  
+target_include_directories(server_action PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(communicate PUBLIC c_std_99 cxx_std_17)  
 ament_target_dependencies(
-  topic
+  communicate
   "rclcpp"
   "std_msgs"
   "plumbing"
+  "rclcpp_action"
 )
 ament_target_dependencies(
   server
   "rclcpp"
   "std_msgs"
   "plumbing"
+  "rclcpp_action"
+)
+ament_target_dependencies(
+  server_action
+  "rclcpp"
+  "std_msgs"
+  "plumbing"
+  "rclcpp_action"
 )
 
 install(TARGETS 
-  topic
+  communicate
   server
+  server_action
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
