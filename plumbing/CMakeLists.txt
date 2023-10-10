@@ -11,6 +11,7 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Person.msg"
   "srv/Multi.srv"
+  "action/Progress.action"
 )
 
 if(BUILD_TESTING)
