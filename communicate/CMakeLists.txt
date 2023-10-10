@@ -10,19 +10,31 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(plumbing REQUIRED)
 
-add_executable(communicate src/communicate.cpp src/communicate_node.cpp)
-target_include_directories(communicate PUBLIC
+add_executable(topic src/topic.cpp src/topic_node.cpp)
+add_executable(server src/server.cpp src/server_node.cpp)
+target_include_directories(topic PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(communicate PUBLIC c_std_99 cxx_std_17)  
+target_include_directories(server PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(topic PUBLIC c_std_99 cxx_std_17)  
 ament_target_dependencies(
-  communicate
+  topic
+  "rclcpp"
+  "std_msgs"
+  "plumbing"
+)
+ament_target_dependencies(
+  server
   "rclcpp"
   "std_msgs"
   "plumbing"
 )
 
-install(TARGETS communicate
+install(TARGETS 
+  topic
+  server
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
