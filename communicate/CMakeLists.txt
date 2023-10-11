@@ -42,3 +42,8 @@ add_dependencies(server ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TA
 target_link_libraries(server
   ${catkin_LIBRARIES}
 )
+add_executable(param src/param.cpp src/param_node.cpp)
+add_dependencies(param ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(param
+  ${catkin_LIBRARIES}
+)

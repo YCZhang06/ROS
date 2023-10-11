@@ -20,12 +20,13 @@ class communicate_template
 		ros::ServiceServer server;
 		ros::ServiceClient client;
 
-		communicate_template(ros::NodeHandle nh);
+		communicate_template(ros::NodeHandle handle);
 		~communicate_template();
 		void normal_pub_msg();
 		void define_pub_msg();
 		void request();
 		void run();
+		void operator_param(ros::NodeHandle nh);
 
 	private:
 		void normal_callback(const std_msgs::String::ConstPtr &msg);  
