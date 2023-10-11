@@ -29,6 +29,8 @@ class communicate_template : public rclcpp::Node
 		rclcpp_action::Server<plumbing::action::Progress>::SharedPtr server_action;
 		rclcpp_action::Client<plumbing::action::Progress>::SharedPtr client_action;
 
+		rclcpp::SyncParametersClient::SharedPtr client_param;
+
 		rclcpp::TimerBase::SharedPtr timer;
 
 		communicate_template();
@@ -40,6 +42,12 @@ class communicate_template : public rclcpp::Node
 		void execute(std::shared_ptr<rclcpp_action::ServerGoalHandle<plumbing::action::Progress>> goalhandle);
 		void accept_callback(std::shared_ptr<rclcpp_action::ServerGoalHandle<plumbing::action::Progress>> goalhandle);
 		void send_request(int num);
+		void add();
+		void search();
+		void revise();
+		void del();
+		void get();
+		void update();
 
 	private:
 		void timer_callback();
